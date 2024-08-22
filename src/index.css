@@ -5,3 +5,29 @@
 .container {
     max-width: 700px;
 }
+.line {
+    text-decoration: line-through solid red;
+}
+
+@media screen and (max-width: 640px) {
+    .form-input {
+        width:100%;
+    }
+    .add-btn {
+        width: 48%;
+        padding: 4px;
+    }
+    .delete-all-btn {
+        width: 48%;
+        padding: 4px;
+    }
+}
+
+@media screen  and (max-width: 640px){
+    .main-container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    
+}

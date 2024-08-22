@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
-/**
- * Layout component for the to-do list application.
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { BiSolidEdit } from "react-icons/bi";
+import { GrUpdate } from "react-icons/gr";
+import { MdOutlineAddTask } from "react-icons/md";
+/*
+ Layout component for the to-do list application.
  */
 const Layout = () => {
   const [newTask, setNewTask] = useState('');
@@ -22,8 +25,8 @@ const Layout = () => {
     setNewTask(e.target.value);
   };
 
-  /** 
-   * Handles the form submission event.
+  /*
+   Handles the form submission event.
    */
   const handleAddTask = (e) => {
     e.preventDefault();
@@ -90,37 +93,39 @@ const Layout = () => {
   };
 
   return (
-    <div>
-      <h1 className='text-5xl font-bold text-center mt-36'>To-Do List</h1>
-      
-      <form onSubmit={handleAddTask} className='border-2 border-gray-600 mx-auto my-6 container p-4 rounded-lg'>
-        <div className='flex flex-wrap gap-4'>
+    <div className='main-container'>
+      <h1 className='text-5xl font-bold text-center mt-14 mb-9'>To-Do List</h1>
+      <div className='border border-gray-600 mx-auto container p-6 rounded-lg shadow-2xl '>
+
+      <form onSubmit={handleAddTask} >
+        <div className='flex flex-wrap gap-4  justify-evenly'>
           <input
             type="text"
-            className="border border-gray-300 flex-grow p-2 rounded"
+            className="border border-gray-300 flex-grow p-2 rounded text-wrap form-input"
             value={newTask}
             placeholder='Enter your task here'
             onChange={handleNewTaskChange}
           />
-          <button type='submit' className='border border-gray-300 p-2 bg-green-400'>
-            Add Task
+          <button type='submit' className='text-white  bg-green-500 hover:bg-green-600 hover:scale-110 rounded-md p-2 add-btn'>
+            <MdOutlineAddTask size='2em' title='Add task' />
           </button>
           <button
             type='button'
             onClick={handleDeleteAllTasks}
-            className='border border-gray-300 p-2 bg-red-500 text-white'
+            className='border border-gray-300 p-2 bg-red-500 text-white hover:bg-red-600 hover:scale-110 rounded-md delete-all-btn'
+            title='Delete all tasks'
           >
             Delete All
           </button>
         </div>
         { warning && <p className='text-red-600 pt-1'><sup>*</sup> Enter your task and then click the add button</p>}
       </form>
-      <div className='border-2 border-gray-600 mx-auto my-6 container p-4 rounded-lg'>
+      <div className='border  border-t-black my-8 border-dashed '>
         {taskList.map((task, index) => (
-          <div key={index} className='flex gap-4'>
+          <div key={index} className='flex flex-wrap md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3'>
             <input
               type="checkbox"
-              className='border border-red-400 text-red-500 w-10'
+              className='text-wrap border border-red-400 text-red-500 w-8'
               checked={completedTasks.has(index)}
               onChange={() => handleCheckboxChange(index)}
             />
@@ -128,26 +133,32 @@ const Layout = () => {
               <input
                 type="text"
                 value={editTaskValue}
-                className={`px-2 py-4 border-b border-gray-300 my-2 flex-grow ${completedTasks.has(index) ? 'line-through' : ''}`}
+                className={`text-wrap p-2 my-2 flex-grow ${completedTasks.has(index) ? 'line ' : ''}`}
                 onChange={(e) => setEditTaskValue(e.target.value)}
               />
             ) : (
               <input
                 type="text"
                 value={task}
-                className={`px-2 py-4 border-b border-gray-300 my-2 flex-grow bg-gray-100 ${completedTasks.has(index) ? 'line-through' : ''}`}
+                className={`p-2  text-wrap my-2 flex-grow bg-gray-50 ${completedTasks.has(index) ? 'line' : ''}`}
                 readOnly
               />
             )}
             {editIndex === index ? (
-              <button className='border border-gray-300 py-2 px-4 bg-lime-500 text-white' onClick={() => handleUpdateTask(index)}>Update</button>
+              <button className=' p-2  text-green-500 hover:text-green-600 hover:scale-110 update-btn' 
+              onClick={() => handleUpdateTask(index)}><GrUpdate size='2em' title='Update task' /></button>
             ) : (
-              <button className='border border-gray-300 py-2 px-4 bg-orange-400 text-white' onClick={() => handleEditTask(index)}>Edit</button>
+              <button className=' p-2   text-orange-500 hover:text-orange-600 hover:scale-110 ' 
+              onClick={() => handleEditTask(index)}> <BiSolidEdit size='2em' title='Edit task' /></button>
             )}
-            <button className='border border-gray-300 py-2 px-4 bg-red-400 text-white' onClick={() => handleDeleteTask(index)}>Delete</button>
+            <button className=' p-2  text-red-500 hover:text-red-600 hover:scale-110 ' 
+            onClick={() => handleDeleteTask(index)}><RiDeleteBin5Line size='2em' title='delete task'/></button>
           </div>
         ))}
       </div>
+      </div>
+      
+
     </div>
   );
 };
