@@ -106,7 +106,7 @@ const Layout = () => {
             placeholder='Enter your task here'
             onChange={handleNewTaskChange}
           />
-          <button type='submit' className='text-white  bg-green-500 hover:bg-green-600 hover:scale-110 rounded-md p-2 add-btn flex gap-2 items-center'>
+          <button type='submit' className='text-white  bg-green-500 hover:bg-green-600 hover:scale-110 rounded-md p-2 add-btn flex gap-2 items-center justify-center'>
             <MdOutlineAddTask size='2em' title='Add task' /> <span>Add</span>
           </button>
           <button
@@ -123,11 +123,11 @@ const Layout = () => {
       <div className='border  border-t-black my-8 border-dashed '>
         
         {taskList.map((task, index) => (
-          <div key={index} className='flex flex-wrap gap-x-1 md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3 container-2 justify-between'>
-            <div className='flex '>
+          <div key={index} className='flex flex-wrap gap-x-1 md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3 container-2 '>
+            <div className='flex gap-2  flex-grow'>
               <input
               type="checkbox"
-              className=' text-red-500 w-6 h-6  block hover:scale-110 items-center mt-4'
+              className='w-6 h-6  block hover:scale-110 items-center mt-4'
               checked={completedTasks.has(index)}
               onChange={() => handleCheckboxChange(index)}
             />
@@ -135,14 +135,14 @@ const Layout = () => {
               <input
                 type="text"
                 value={editTaskValue}
-                className={`text-wrap p-2 my-2 flex-grow ${completedTasks.has(index) ? 'line ' : ''}`}
+                className={`text-wrap input-btn p-2 my-2 w-full ${completedTasks.has(index) ? 'line ' : ''}`}
                 onChange={(e) => setEditTaskValue(e.target.value)}
               />
             ) : (
               <input
                 type="text"
                 value={task}
-                className={`p-2  text-wrap my-2 flex-grow bg-gray-50 ${completedTasks.has(index) ? 'line' : ''}`}
+                className={`p-2 input-btn text-wrap my-2 w-full bg-gray-50 ${completedTasks.has(index) ? 'line' : ''}`}
                 readOnly
               />
             )}
