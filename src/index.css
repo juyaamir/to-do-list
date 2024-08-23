@@ -21,6 +21,9 @@
         width: 45%;
         padding: 2px;
     }
+    .checkbox-btn{
+        width: 20px;
+    }
 }
 
 @media screen  and (max-width: 640px){

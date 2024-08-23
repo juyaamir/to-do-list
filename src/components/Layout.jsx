@@ -125,7 +125,7 @@ const Layout = () => {
           <div key={index} className='flex flex-wrap md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3'>
             <input
               type="checkbox"
-              className='text-wrap border border-red-400 text-red-500 w-8'
+              className='text-wrap border border-red-400 text-red-500 w-8 checkbox-btn'
               checked={completedTasks.has(index)}
               onChange={() => handleCheckboxChange(index)}
             />
