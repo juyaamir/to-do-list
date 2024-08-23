@@ -14,12 +14,12 @@
         width:100%;
     }
     .add-btn {
-        width: 48%;
-        padding: 4px;
+        width: 45%;
+        padding: 2px;
     }
     .delete-all-btn {
-        width: 48%;
-        padding: 4px;
+        width: 45%;
+        padding: 2px;
     }
 }
 
