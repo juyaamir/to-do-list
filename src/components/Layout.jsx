@@ -106,8 +106,8 @@ const Layout = () => {
             placeholder='Enter your task here'
             onChange={handleNewTaskChange}
           />
-          <button type='submit' className='text-white  bg-green-500 hover:bg-green-600 hover:scale-110 rounded-md p-2 add-btn'>
-            <MdOutlineAddTask size='2em' title='Add task' />
+          <button type='submit' className='text-white  bg-green-500 hover:bg-green-600 hover:scale-110 rounded-md p-2 add-btn flex gap-2 items-center'>
+            <MdOutlineAddTask size='2em' title='Add task' /> <span>Add</span>
           </button>
           <button
             type='button'
@@ -121,9 +121,16 @@ const Layout = () => {
         { warning && <p className='text-red-600 pt-1'><sup>*</sup> Enter your task and then click the add button</p>}
       </form>
       <div className='border  border-t-black my-8 border-dashed '>
+        
         {taskList.map((task, index) => (
-          <div key={index} className='flex flex-wrap gap-x-1 md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3'>
-
+          <div key={index} className='flex flex-wrap gap-x-1 md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3 container-2 justify-between'>
+            <div className='flex '>
+              <input
+              type="checkbox"
+              className=' text-red-500 w-6 h-6  block hover:scale-110 items-center mt-4'
+              checked={completedTasks.has(index)}
+              onChange={() => handleCheckboxChange(index)}
+            />
             {editIndex === index ? (
               <input
                 type="text"
@@ -139,12 +146,9 @@ const Layout = () => {
                 readOnly
               />
             )}
-            <input
-              type="checkbox"
-              className='text-wrap border border-red-400 text-red-500 w-6 checkbox-btn block '
-              checked={completedTasks.has(index)}
-              onChange={() => handleCheckboxChange(index)}
-            />
+            </div>
+            
+            <div className='flex justify-center btn-container'> 
             {editIndex === index ? (
               <button className=' p-2  text-green-500 hover:text-green-600 hover:scale-110 update-btn' 
               onClick={() => handleUpdateTask(index)}><GrUpdate size='2em' title='Update task' /></button>
@@ -153,7 +157,10 @@ const Layout = () => {
               onClick={() => handleEditTask(index)}> <BiSolidEdit size='2em' title='Edit task' /></button>
             )}
             <button className=' p-2  text-red-500 hover:text-red-600 hover:scale-110 ' 
-            onClick={() => handleDeleteTask(index)}><RiDeleteBin5Line size='2em' title='delete task'/></button>
+            onClick={() => handleDeleteTask(index)}><RiDeleteBin5Line size='2em' title='delete task'/>
+            </button>
+            </div>
+
           </div>
         ))}
       </div>
