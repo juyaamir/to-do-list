@@ -122,13 +122,8 @@ const Layout = () => {
       </form>
       <div className='border  border-t-black my-8 border-dashed '>
         {taskList.map((task, index) => (
-          <div key={index} className='flex flex-wrap md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3'>
-            <input
-              type="checkbox"
-              className='text-wrap border border-red-400 text-red-500 w-8 checkbox-btn'
-              checked={completedTasks.has(index)}
-              onChange={() => handleCheckboxChange(index)}
-            />
+          <div key={index} className='flex flex-wrap gap-x-1 md:gap-2 lg:gap-4 border-b border-gray-300 tasks text-wrap mt-3'>
+
             {editIndex === index ? (
               <input
                 type="text"
@@ -144,6 +139,12 @@ const Layout = () => {
                 readOnly
               />
             )}
+            <input
+              type="checkbox"
+              className='text-wrap border border-red-400 text-red-500 w-6 checkbox-btn block '
+              checked={completedTasks.has(index)}
+              onChange={() => handleCheckboxChange(index)}
+            />
             {editIndex === index ? (
               <button className=' p-2  text-green-500 hover:text-green-600 hover:scale-110 update-btn' 
               onClick={() => handleUpdateTask(index)}><GrUpdate size='2em' title='Update task' /></button>

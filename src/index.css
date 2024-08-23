@@ -9,6 +9,7 @@
     text-decoration: line-through solid red;
 }
 
+
 @media screen and (max-width: 640px) {
     .form-input {
         width:100%;
@@ -21,16 +22,18 @@
         width: 45%;
         padding: 2px;
     }
-    .checkbox-btn{
-        width: 20px;
-    }
+
 }
 
 @media screen  and (max-width: 640px){
     .main-container {
         padding-right: 1rem;
         padding-left: 1rem;
+    }   
+}
+@media screen and (max-width: 420px) {
+    .form-input {
+        width:100%;
+        
     }
-
-    
 }
