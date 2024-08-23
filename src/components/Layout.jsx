@@ -94,7 +94,7 @@ const Layout = () => {
 
   return (
     <div className='main-container'>
-      <h1 className='text-5xl font-bold text-center mt-14 mb-9'>To-Do List</h1>
+      <h1 className='text-5xl font-bold text-center mt-14 mb-9'>To Do List</h1>
       <div className='border border-gray-600 mx-auto container p-6 rounded-lg shadow-2xl '>
 
       <form onSubmit={handleAddTask} >
